@@ -1,0 +1,5 @@
+serverAddr = "103.252.122.144"
+serverPort = 30000
+
+auth.method = "token"
+auth.token = "Cc#r@MTun5HGOgPPQfmedX68x68nPP5nOnHXCjB@9zKFnC9FK@FzfkE*bhbcf8b6U*YjDXJy&kug*kQxGr1!IOuG^8&2Dj!KG8MXreR&Igd@55l$F*5iVcqjH#A@A%p&"
