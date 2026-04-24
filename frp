@@ -1,0 +1,13 @@
+[Unit]
+Description=FRP Server
+After=network.target
+
+[Service]
+User=frp
+Group=frp
+WorkingDirectory=/etc/frp
+ExecStart=/etc/frp/frps -c /etc/frp/frps.ini
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
