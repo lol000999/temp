@@ -1,0 +1,14 @@
+[Unit]
+Description=Velocity Minecraft Proxy
+After=network.target
+
+[Service]
+User=velocity
+Group=velocity
+WorkingDirectory=/home/velocity
+ExecStart=/usr/bin/java -Xms128M -Xmx384M -jar /home/velocity/velocity.jar
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
