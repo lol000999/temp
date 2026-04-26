@@ -6,7 +6,7 @@ After=network.target
 User=velocity
 Group=velocity
 WorkingDirectory=/home/velocity
-ExecStart=/usr/bin/java -Xms128M -Xmx384M -jar /home/velocity/velocity.jar
+ExecStart=/usr/bin/java -Xms256M -Xmx256M -jar /home/velocity/velocity.jar
 Restart=always
 RestartSec=5
 
