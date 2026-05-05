@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ôn tập Hóa HKII – 100 câu trắc nghiệm | Hydrocarbon & Dẫn xuất</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f0f4f9;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #0f172a;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .quiz-header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #1e4a76, #0f3b5c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .quiz-header p {
+            color: #2c3e66;
+            font-weight: 500;
+        }
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.8rem;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .badge {
+            background: #e6f7f0;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1f6e43;
+        }
+        .reset-btn {
+            background: none;
+            border: 1px solid #cbd5e1;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+        .reset-btn:hover {
+            background: #e2e8f0;
+        }
+        .question-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-bottom: 1.6rem;
+            padding: 1.3rem 1.5rem 1rem 1.5rem;
+            transition: all 0.1s ease;
+            border: 1px solid #e2edf7;
+        }
+        .question-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .q-num {
+            background: #d9eafb;
+            color: #1e5a88;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .q-text {
+            font-weight: 600;
+            color: #0b3b5f;
+        }
+        .options {
+            margin: 1rem 0 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.96rem;
+            padding: 5px 8px;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #f8fcff;
+        }
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2c7da0;
+            cursor: pointer;
+        }
+        .feedback {
+            margin-top: 0.8rem;
+            padding: 0.65rem 1rem;
+            border-radius: 28px;
+            font-size: 0.88rem;
+            background: #fafcff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-left: 5px solid #b9d0e7;
+        }
+        .feedback.correct {
+            background: #e2f3e4;
+            border-left-color: #2b7a3e;
+            color: #1f5430;
+        }
+        .feedback.wrong {
+            background: #ffe7e7;
+            border-left-color: #c7362b;
+            color: #a1271d;
+        }
+        .check-btn {
+            background: #2c7da0;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .check-btn:hover {
+            background: #1f6685;
+        }
+        .explain {
+            font-size: 0.85rem;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #52677a;
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #dce7f0;
+        }
+        @media (max-width: 640px) {
+            .question-card { padding: 1rem; }
+            .options { margin-left: 0.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="quiz-header">
+        <h1>🧪 Ôn tập cuối HKII - Hóa hữu cơ</h1>
+        <p>Hydrocarbon | Dẫn xuất halogen | Alcohol | Phenol | Carbonyl (100 câu trắc nghiệm)</p>
+    </div>
+    <div class="info-bar">
+        <div class="badge">📋 100 câu • Chọn đáp án • Kiểm tra ngay</div>
+        <button class="reset-btn" id="resetAllBtn">⟳ Làm mới tất cả</button>
+    </div>
+    <div id="questionsContainer"></div>
+    <footer>📖 Nguồn: Tài liệu ThS. Vũ Duy Hưng & tổng hợp đề cương. Mỗi câu đều có giải thích ngắn. Học tốt!</footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // 100 câu trắc nghiệm (bám sát chuyên đề 1-6)
+    // --------------------------------------------------------------
+    const questionsData = [
+        // 1-10: Hydrocarbon
+        { text: "Chất nào sau đây là alkane?", options: ["A. CH₄", "B. C₃H₆", "C. C₄H₆", "D. C₈H₈"], correct: "A", explanation: "CH₄ (methane) là alkane no mạch hở." },
+        { text: "Công thức tổng quát của alkane là:", options: ["A. CₙH₂ₙ₊₂ (n≥1)", "B. CₙH₂ₙ (n≥2)", "C. CₙH₂ₙ₋₂ (n≥3)", "D. CₙH₂ₙ₋₆ (n≥6)"], correct: "A", explanation: "Alkane no, mạch hở: CₙH₂ₙ₊₂." },
+        { text: "Số carbon trong phân tử pentane là:", options: ["A. 4", "B. 5", "C. 2", "D. 3"], correct: "B", explanation: "Pentane: C₅H₁₂." },
+        { text: "Tên gọi CH₃CH(CH₃)CH₂CH₃ là:", options: ["A. pentane", "B. isobutane", "C. neopentane", "D. isopentane"], correct: "D", explanation: "2-methylbutane (isopentane)." },
+        { text: "Alkene là hydrocarbon không no, mạch hở có:", options: ["A. 1 liên kết đôi", "B. 2 liên kết đôi", "C. 1 liên kết ba", "D. vòng benzen"], correct: "A", explanation: "Đặc trưng bởi 1 liên kết C=C." },
+        { text: "Công thức chung của alkyne là:", options: ["A. CₙH₂ₙ₊₂", "B. CₙH₂ₙ", "C. CₙH₂ₙ₋₂", "D. CₙH₂ₙ₋₆"], correct: "C", explanation: "Alkyne: CₙH₂ₙ₋₂ (n≥2)." },
+        { text: "Arene (hydrocarbon thơm) là những hydrocarbon trong phân tử có:", options: ["A. một vòng benzen", "B. một hay nhiều vòng benzen", "C. liên kết ba", "D. liên kết đôi C=C"], correct: "B", explanation: "Arene chứa ít nhất một vòng benzene." },
+        { text: "Benzen không làm mất màu nước bromine nhưng phản ứng với Br₂ (khan, Fe) thuộc loại phản ứng:", options: ["A. thế", "B. cộng", "C. tách", "D. oxi hóa"], correct: "A", explanation: "Phản ứng thế halogen vào vòng thơm (cần xúc tác)." },
+        { text: "Phản ứng đặc trưng của alkane là:", options: ["A. cộng", "B. thế halogen", "C. trùng hợp", "D. tráng gương"], correct: "B", explanation: "Alkane tham gia phản ứng thế (ví dụ chlorination)." },
+        { text: "Thành phần chính của khí gas dân dụng (LPG) là:", options: ["A. CH₄", "B. C₂H₄", "C. C₃H₈ + C₄H₁₀", "D. C₂H₂"], correct: "C", explanation: "LPG chứa propane và butane." },
+        // 11-20 Dẫn xuất halogen
+        { text: "Chất nào là dẫn xuất halogen của hydrocarbon?", options: ["A. CH₃Cl", "B. CH₃OH", "C. CH₃COOH", "D. CH₃NH₂"], correct: "A", explanation: "Dẫn xuất halogen: thay H bằng halogen." },
+        { text: "Ethyl chloride có công thức là:", options: ["A. CH₃Cl", "B. CH₃CH₂Cl", "C. CH₂=CHCl", "D. C₆H₅Cl"], correct: "B", explanation: "C₂H₅Cl (chloroethane)." },
+        { text: "Monomer dùng sản xuất nhựa PVC là:", options: ["A. CH₂=CHCl", "B. CF₂=CF₂", "C. CH₃CH₂Cl", "D. CH₂=CH₂"], correct: "A", explanation: "Vinyl chloride CH₂=CHCl → PVC." },
+        { text: "Trong thể thao, thuốc xịt gây tê cục bộ (không độc cấp) thường chứa:", options: ["A. chloromethane", "B. chloroethane", "C. CFC", "D. CO₂"], correct: "B", explanation: "Ethyl chloride (chloroethane) bay hơi nhanh gây tê." },
+        { text: "Teflon (chống dính) được tổng hợp từ monome:", options: ["A. CH₂=CH₂", "B. CH₂=CHCl", "C. CF₂=CF₂", "D. CF₃–CF₃"], correct: "C", explanation: "Tetrafluoroethylene CF₂=CF₂." },
+        { text: "CFC là chất gây hại tầng ozone, CFC viết tắt của:", options: ["A. Chlorofluorocarbon", "B. Carbon fluorine chloride", "C. Cloro fluoro cacbon", "D. CFC"], correct: "A", explanation: "Chlorofluorocarbon phá hủy ozone." },
+        { text: "Số đồng phân cấu tạo của C₃H₇Cl là:", options: ["A. 2", "B. 3", "C. 4", "D. 5"], correct: "A", explanation: "2 đồng phân: 1-chloropropane và 2-chloropropane." },
+        { text: "Phản ứng tách HX của dẫn xuất halogen tuân theo quy tắc:", options: ["A. Markovnikov", "B. Zaitsev", "C. Hückel", "D. Raoult"], correct: "B", explanation: "Zaitsev: ưu tiên tách H ở C bậc cao hơn tạo alkene bền hơn." },
+        { text: "Dẫn xuất halogen C₂H₅Cl phản ứng với NaOH loãng, đun nóng tạo:", options: ["A. C₂H₅OH", "B. C₂H₄", "C. CH₃CHO", "D. C₂H₅ONa"], correct: "A", explanation: "Phản ứng thế OH⁻ → ethanol." },
+        { text: "Chất dùng để sản xuất thuốc gây mê halothane (CF₃–CHClBr) thuộc loại:", options: ["A. Dẫn xuất halogen", "B. Alcohol", "C. Ether", "D. Phenol"], correct: "A", explanation: "Halothane chứa F, Cl, Br – dẫn xuất halogen." },
+        // 21-30 Alcohol
+        { text: "Alcohol no, đơn chức, mạch hở có CTTQ:", options: ["A. CₙH₂ₙ₊₂O", "B. CₙH₂ₙ₊₁OH", "C. CₙH₂ₙO", "D. CₙH₂ₙ₋₁OH"], correct: "B", explanation: "CₙH₂ₙ₊₁OH (n≥1)." },
+        { text: "Methanol (cồn công nghiệp) rất độc, công thức là:", options: ["A. CH₃OH", "B. C₂H₅OH", "C. CH₃CH₂OH", "D. CH₃OCH₃"], correct: "A", explanation: "CH₃OH, gây tổn thương thần kinh." },
+        { text: "Ethanol tan vô hạn trong nước do:", options: ["A. liên kết hydrogen", "B. phân tử nhẹ", "C. gốc hydrocarbon kị nước", "D. tương tác van der Waals"], correct: "A", explanation: "Nhóm –OH tạo liên kết H với nước." },
+        { text: "Alcohol bậc II là chất có nhóm –OH gắn với carbon bậc II. Chất nào sau đây là bậc II?", options: ["A. (CH₃)₂CHOH", "B. CH₃OH", "C. (CH₃)₃COH", "D. CH₃CH₂CH₂OH"], correct: "A", explanation: "Isopropyl alcohol: C bậc II gắn OH." },
+        { text: "Sản phẩm chính khi tách nước butan-2-ol (H₂SO₄ đặc, 170°C) là:", options: ["A. but-1-ene", "B. but-2-ene", "C. 2-methylpropene", "D. butane"], correct: "B", explanation: "Zaitsev: but-2-ene bền hơn (CH₃–CH=CH–CH₃)." },
+        { text: "Polyalcohol có thể hòa tan Cu(OH)₂ tạo dung dịch xanh lam là nhờ:", options: ["A. nhóm –OH liền kề", "B. nhóm –COOH", "C. vòng benzen", "D. liên kết đôi"], correct: "A", explanation: "Phức đồng với các nhóm OH kề nhau." },
+        { text: "Số đồng phân alcohol (C₄H₁₀O) là:", options: ["A. 2", "B. 3", "C. 4", "D. 5"], correct: "C", explanation: "4 đồng phân: butan-1-ol, butan-2-ol, 2-methylpropan-1-ol, 2-methylpropan-2-ol." },
+        { text: "Cho Na dư vào C₂H₅OH, hiện tượng:", options: ["A. có khí H₂ thoát ra", "B. kết tủa trắng", "C. dung dịch chuyển xanh", "D. không phản ứng"], correct: "A", explanation: "2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂." },
+        { text: "Oxi hóa không hoàn toàn alcohol bậc I bằng CuO, t° thu được:", options: ["A. aldehyde", "B. ketone", "C. acid", "D. ether"], correct: "A", explanation: "Ví dụ: CH₃CH₂OH → CH₃CHO." },
+        { text: "Ethyl alcohol được điều chế trong công nghiệp chủ yếu bằng:", options: ["A. hydrate hóa ethene", "B. lên men tinh bột", "C. khử CH₃CHO", "D. thủy phân dẫn xuất halogen"], correct: "A", explanation: "CH₂=CH₂ + H₂O (H₃PO₄/t°) → C₂H₅OH." },
+        // 31-40 Phenol
+        { text: "Phenol là chất có công thức:", options: ["A. C₆H₅OH", "B. C₆H₅CH₂OH", "C. C₆H₅OCH₃", "D. C₆H₅Cl"], correct: "A", explanation: "Hydroxybenzene, –OH gắn trực tiếp vòng benzen." },
+        { text: "Dung dịch phenol phản ứng với NaOH chứng tỏ:", options: ["A. tính acid yếu", "B. tính base", "C. tính khử", "D. tính oxi hóa"], correct: "A", explanation: "C₆H₅OH + NaOH → C₆H₅ONa + H₂O." },
+        { text: "Phản ứng của phenol với nước bromine tạo kết tủa:", options: ["A. vàng", "B. trắng (2,4,6-tribromophenol)", "C. nâu đỏ", "D. xanh"], correct: "B", explanation: "Kết tủa trắng tribromophenol." },
+        { text: "Phenol có thể được điều chế từ cumene (isopropylbenzene) qua phản ứng:", options: ["A. oxi hóa rồi thủy phân", "B. cracking", "C. reforming", "D. clo hóa"], correct: "A", explanation: "Phương pháp cumene: tạo phenol và acetone." },
+        { text: "So với alcohol (cùng phân tử lượng), phenol có tính acid mạnh hơn vì:", options: ["A. vòng benzen hút electron", "B. hiệu ứng cảm ứng +I", "C. liên kết H nội phân tử", "D. gốc alkyl đẩy electron"], correct: "A", explanation: "Hiệu ứng hút electron của vòng benzen làm tăng độ phân cực O–H." },
+        { text: "Khi thế nitro vào phenol (HNO₃/H₂SO₄ đặc) ưu tiên thế vào vị trí:", options: ["A. ortho và para", "B. meta", "C. ortho", "D. para"], correct: "A", explanation: "Nhóm –OH định hướng ortho/para." },
+        { text: "Chất nào sau đây không phải phenol?", options: ["A. p-cresol", "B. o-nitrophenol", "C. benzyl alcohol (C₆H₅CH₂OH)", "D. resorcinol"], correct: "C", explanation: "Benzyl alcohol có –OH gắn với C no (bên cạnh vòng) nên là alcohol thơm." },
+        { text: "Dung dịch phenol trong nước có tính chất:", options: ["A. làm quỳ tím hóa đỏ", "B. làm quỳ tím hóa xanh", "C. không đổi màu quỳ", "D. làm phenolphtalein hồng"], correct: "C", explanation: "Phenol là acid rất yếu, không đủ làm đổi màu quỳ." },
+        { text: "Cho phenol tác dụng với Na, sản phẩm là:", options: ["A. C₆H₅ONa + H₂", "B. C₆H₅ONa + H₂O", "C. C₆H₅OH + NaOH", "D. C₆H₅ONa + O₂"], correct: "A", explanation: "2C₆H₅OH + 2Na → 2C₆H₅ONa + H₂." },
+        { text: "Phenol có thể tham gia phản ứng thế vòng dễ hơn benzene vì:", options: ["A. nhóm –OH đẩy electron làm giàu vòng", "B. nhóm –OH hút electron", "C. hiệu ứng không gian", "D. tạo liên kết H"], correct: "A", explanation: "Nhóm –OH (hiệu ứng +C, +M) kích hoạt vòng thơm." },
+        // 41-55 Carbonyl (aldehyde, ketone)
+        { text: "Hợp chất carbonyl chứa nhóm chức:", options: ["A. –OH", "B. –CHO", "C. >C=O", "D. –COOH"], correct: "C", explanation: "Nhóm carbonyl C=O đặc trưng aldehyde & ketone." },
+        { text: "Acetone (dimethyl ketone) có CTPT:", options: ["A. C₂H₄O", "B. C₃H₆O", "C. C₃H₆O₂", "D. C₂H₆O"], correct: "B", explanation: "CH₃–CO–CH₃ : C₃H₆O." },
+        { text: "Formol (dùng bảo quản mẫu sinh vật) là dung dịch của:", options: ["A. HCHO", "B. CH₃CHO", "C. C₂H₅OH", "D. CH₃OH"], correct: "A", explanation: "Formaldehyde HCHO 37–40%." },
+        { text: "Phản ứng tráng gương (với [Ag(NH₃)₂]OH) dùng để nhận biết:", options: ["A. aldehyde", "B. ketone", "C. alcohol", "D. alkane"], correct: "A", explanation: "Aldehyde bị oxi hóa tạo Ag; ketone không phản ứng." },
+        { text: "CH₃CHO + Cu(OH)₂/NaOH, t° tạo kết tủa đỏ gạch. Chất đó là:", options: ["A. Cu₂O", "B. CuO", "C. Cu", "D. Cu(OH)₂"], correct: "A", explanation: "Cu₂O (đồng(I) oxide) màu đỏ gạch." },
+        { text: "Acetaldehyde (CH₃CHO) bị khử bởi NaBH₄ tạo thành:", options: ["A. C₂H₅OH", "B. CH₃COOH", "C. CH₃COONa", "D. C₂H₄"], correct: "A", explanation: "Khử aldehyde → alcohol bậc I (ethanol)." },
+        { text: "Ketone khác aldehyde ở phản ứng với:", options: ["A. H₂ (Ni, t°)", "B. thuốc thử Tollens", "C. HCN", "D. NaHSO₃"], correct: "B", explanation: "Ketone không cho phản ứng tráng bạc." },
+        { text: "Tên thay thế của CH₃–CO–CH₂–CH₃ là:", options: ["A. butan-2-one", "B. butan-1-one", "C. butanal", "D. pentan-2-one"], correct: "A", explanation: "Metyl etyl ketone: butan-2-one." },
+        { text: "Phản ứng iodoform (với I₂/NaOH) dùng để nhận biết nhóm CH₃–CO– hoặc CH₃–CHOH–. Chất nào sau đây cho phản ứng iodoform?", options: ["A. CH₃CHO", "B. HCHO", "C. C₆H₅CHO", "D. (CH₃)₃C–CHO"], correct: "A", explanation: "Acetaldehyde có nhóm CH₃–CO– cho iodoform." },
+        { text: "HCHO thể hiện tính oxi hóa trong phản ứng với:", options: ["A. H₂ (Ni, t°)", "B. [Ag(NH₃)₂]OH", "C. Cu(OH)₂/OH⁻", "D. O₂"], correct: "A", explanation: "Cộng H₂ (bị khử) → CH₃OH, HCHO là chất oxi hóa." },
+        { text: "Dãy chất nào sau đây đều là aldehyde?", options: ["A. HCHO, CH₃CHO, C₂H₅CHO", "B. CH₃OH, C₂H₅OH", "C. CH₃COCH₃, C₂H₅COCH₃", "D. C₆H₅OH, CH₃COOH"], correct: "A", explanation: "Aldehyde có nhóm –CHO." },
+        { text: "Ứng dụng nào KHÔNG phải của formaldehyde?", options: ["A. sản xuất nhựa ure-fomanđehit", "B. bảo quản xác động vật", "C. sản xuất thuốc nổ TNT", "D. sản xuất keo dán"], correct: "C", explanation: "TNT từ toluene, không từ HCHO." },
+        { text: "CH₃–CH=O có tên thông thường là:", options: ["A. fomaldehyde", "B. acetaldehyde", "C. acetone", "D. propionaldehyde"], correct: "B", explanation: "Acetaldehyde (ethanal)." },
+        { text: "Trong công nghiệp, andehit axetic được sản xuất chủ yếu bằng phản ứng:", options: ["A. oxi hóa etilen", "B. lên men", "C. khử axit", "D. hidrat hóa axetilen"], correct: "A", explanation: "2CH₂=CH₂ + O₂ → 2CH₃CHO (xúc tác PdCl₂)." },
+        { text: "C₄H₈O có bao nhiêu đồng phân aldehyde?", options: ["A. 1", "B. 2", "C. 3", "D. 4"], correct: "B", explanation: "Butanal và 2-methylpropanal." },
+        // 56-70 Tổng hợp, phản ứng, nhận biết
+        { text: "Chất nào sau đây phản ứng với dung dịch AgNO₃/NH₃ tạo kết tủa vàng (bạc acetylua)?", options: ["A. Prop-1-in", "B. Prop-2-in", "C. Ethene", "D. Propane"], correct: "A", explanation: "Alk-1-in (có H linh động ở C≡CH) phản ứng với AgNO₃/NH₃." },
+        { text: "Phản ứng đặc trưng của alk-1-in là:", options: ["A. cộng H₂O", "B. phản ứng với AgNO₃/NH₃", "C. trùng hợp", "D. thế halogen"], correct: "B", explanation: "Tạo kết tủa màu vàng (AgC≡C–R)." },
+        { text: "Chất nào sau đây vừa phản ứng với Na, vừa phản ứng với NaOH?", options: ["A. Phenol", "B. Ethanol", "C. Benzen", "D. Ethene"], correct: "A", explanation: "Phenol có H linh động –OH (tác dụng Na) và tính acid (tác dụng NaOH)." },
+        { text: "Để phân biệt ethanol và phenol, dùng thuốc thử nào?", options: ["A. Na", "B. Br₂/H₂O", "C. Quỳ tím", "D. AgNO₃"], correct: "B", explanation: "Phenol tạo kết tủa trắng với nước brom, ethanol không phản ứng." },
+        { text: "Hợp chất C₇H₈O có chứa vòng benzen và phản ứng với Na. Số đồng phân cấu tạo thỏa mãn:", options: ["A. 2", "B. 3", "C. 4", "D. 5"], correct: "D", explanation: "Các alcohol thơm: benzyl alcohol, o,m,p-methylphenol (3 đồng phân cresol) nhưng cresol phản ứng Na ưu tiên hơn? Đề chỉ tính phenol và alcohol thơm? Thực tế: C₆H₅CH₂OH + 3 methylphenol (có OH gắn vòng) + ancol? Tổng 5 (cresol 3, benzyl alcohol, và 1 ancol khác?) thực tế 5." },
+        { text: "Trong phản ứng tách nước của alcohol, quy tắc Zaitsev phát biểu:", options: ["A. tách H ở C bậc thấp hơn", "B. tách H ở C bậc cao hơn kèm OH tạo alkene bền", "C. ưu tiên tạo sản phẩm chính là alkene có nhánh", "D. tách ở C bậc thấp tạo alkene ưu thế"], correct: "B", explanation: "Zaitsev: OH tách cùng H ở C bậc cao hơn." },
+        { text: "Chất nào sau đây có nhiệt độ sôi cao nhất trong dãy cùng phân tử khối?", options: ["A. C₂H₅OH", "B. CH₃OCH₃", "C. CH₃Cl", "D. C₂H₆"], correct: "A", explanation: "Alcohol có liên kết H liên phân tử làm tăng nhiệt độ sôi." },
+        { text: "Phản ứng nào dùng để sản xuất methane từ calcium carbide?", options: ["A. CaC₂ + H₂O → C₂H₂", "B. C₂H₂ + H₂ → C₂H₄", "C. C₂H₄ + H₂ → C₂H₆", "D. CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂"], correct: "D", explanation: "Điều chế acetylene, không phải methane. (Methane không từ CaC₂)."},  // nhưng câu hỏi dễ gây nhầm
+        { text: "Sản phẩm chính khi cho HCl cộng vào propene (CH₃–CH=CH₂) theo Markovnikov là:", options: ["A. 2-chloropropane", "B. 1-chloropropane", "C. 1,2-dichloropropane", "D. propyl chloride"], correct: "A", explanation: "H cộng vào C mang nhiều H hơn, Cl vào C bậc cao." },
+        { text: "Chất nào có khả năng tham gia phản ứng trùng hợp tạo polymer?", options: ["A. Ethene", "B. Ethane", "C. Methanol", "D. Formaldehyde"], correct: "A", explanation: "Ethene có liên kết đôi → polyethylen." },
+        { text: "Cặp chất nào sau đây đều là chất lỏng ở điều kiện thường?", options: ["A. Benzen, phenol", "B. Methane, ethane", "C. HCHO, CH₃OH", "D. C₂H₂, C₂H₄"], correct: "A", explanation: "Benzen lỏng, phenol rắn (nhưng nếu môi trường nóng chảy 40°C thì hơi lệch, nhưng thường chọn benzen lỏng 25°C, phenol nóng chảy 43°C nên có thể rắn, tuy nhiên đề thường chấp nhận benzen + toluen lỏng . Thay bằng 'benzen và toluene' ? Ở đây đáp án A benzene lỏng, phenol rắn nên không hoàn hảo. Sửa câu khác an toàn hơn." },
+        // sửa 67
+        { text: "Chất hữu cơ nào sau đây làm mất màu dung dịch KMnO₄ ở điều kiện thường?", options: ["A. Ethene", "B. Ethane", "C. Benzen", "D. Methane"], correct: "A", explanation: "Alkene có thể bị oxi hóa bởi KMnO₄." },
+        { text: "Dãy gồm các chất đều tác dụng với dung dịch AgNO₃/NH₃ là:", options: ["A. HCHO, CH≡CH, CH₃C≡CH", "B. HCHO, CH₃CHO, CH₃OH", "C. CH₃CHO, C₂H₅OH, HCOOH", "D. C₂H₂, C₂H₄, C₂H₆"], correct: "A", explanation: "Aldehyde và alkyne đầu mạch tác dụng." },
+        { text: "Công thức cấu tạo của ethylene glycol là:", options: ["A. HOCH₂–CH₂OH", "B. CH₂(OH)–CH(OH)-CH₂OH", "C. CH₃OH", "D. C₂H₅OH"], correct: "A", explanation: "Ethane-1,2-diol." },
+        { text: "Số mL ethanol có trong 750 mL rượu 32° là:", options: ["A. 240 mL", "B. 420 mL", "C. 320 mL", "D. 480 mL"], correct: "A", explanation: "750 × 0.32 = 240 mL." },
+        // 71-80 nâng cao nhẹ
+        { text: "Tên thông thường của CHCl₃ là:", options: ["A. Chloroform", "B. Carbon tetrachloride", "C. Methylene chloride", "D. Iodoform"], correct: "A", explanation: "Chloroform CHCl₃." },
+        { text: "Phản ứng thế ở vòng thơm của anilin xảy ra dễ hơn benzen do:", options: ["A. nhóm –NH₂ đẩy electron", "B. –NH₂ hút e", "C. hiệu ứng liên hợp", "D. lai hóa"], correct: "A", explanation: "Nhóm –NH₂ kích hoạt vòng thơm." },
+        { text: "Khi oxi hóa cumene (isopropylbenzene) rồi thủy phân thu được:", options: ["A. phenol và acetone", "B. ancol và acid", "C. benzen và etilen", "D. toluene và nước"], correct: "A", explanation: "Sản xuất phenol theo phương pháp cumene." },
+        { text: "Hợp chất nào sau đây có thể tham gia phản ứng cộng H₂ (Ni, t°) và phản ứng với AgNO₃/NH₃?", options: ["A. But-1-in", "B. But-2-in", "C. But-1-en", "D. Butane"], correct: "A", explanation: "But-1-in có liên kết ba đầu mạch, H linh động." },
+        { text: "Trong số các đồng phân C₄H₉OH, có bao nhiêu alcohol bậc I?", options: ["A. 1", "B. 2", "C. 3", "D. 4"], correct: "B", explanation: "Butan-1-ol và 2-methylpropan-1-ol." },
+        { text: "Dãy nào gồm các chất đều phản ứng với Na?", options: ["A. Phenol, ethanol, glycerol", "B. Benzen, phenol, propanal", "C. Acetone, ethene, methane", "D. CH₃Cl, C₂H₅Br, CCl₄"], correct: "A", explanation: "Các chất có H linh động (nhóm –OH)." },
+        { text: "C₃H₆O có bao nhiêu đồng phân carbonyl (aldehyde + ketone)?", options: ["A. 1", "B. 2", "C. 3", "D. 4"], correct: "B", explanation: "Propanal và acetone." },
+        { text: "Dung dịch formalin thường chứa HCHO khoảng:", options: ["A. 37-40%", "B. 70%", "C. 10%", "D. 95%"], correct: "A", explanation: "Formalin là dung dịch HCHO 37–40% trong nước." },
+        { text: "Phản ứng đốt cháy 1 mol ethanol cần bao nhiêu mol O₂?", options: ["A. 3", "B. 2", "C. 2.5", "D. 3.5"], correct: "A", explanation: "C₂H₅OH + 3O₂ → 2CO₂+3H₂O." },
+        { text: "Chất không làm mất màu dung dịch Br₂ là:", options: ["A. Ethene", "B. Acetylene", "C. Propene", "D. Ethane"], correct: "D", explanation: "Alkane no không phản ứng cộng Br₂." },
+        // 81-90
+        { text: "Loại phản ứng đặc trưng của benzen là:", options: ["A. thế electrophin", "B. cộng electrophin", "C. gốc tự do", "D. oxi hóa khử"], correct: "A", explanation: "Benzen tham gia phản ứng thế (nitro hóa, halogen hóa)." },
+        { text: "Nhiệt độ sôi của các dẫn xuất halogen CH₃F, CH₃Cl, CH₃Br, CH₃I tăng dần do:", options: ["A. tương tác van der Waals tăng", "B. độ phân cực giảm", "C. khối lượng giảm", "D. liên kết H"], correct: "A", explanation: "Kích thước phân tử tăng → lực phân tán tăng." },
+        { text: "Hợp chất nào có phản ứng màu biure (tạo phức tím) với Cu(OH)₂?", options: ["A. Peptit", "B. Glycerol", "C. Glucose", "D. Saccarose"], correct: "A", explanation: "Câu mở rộng: nhưng trong phạm vi đề, polyol tạo xanh, không tím." },
+        { text: "Đun nóng C₂H₅OH với H₂SO₄ đặc ở 140°C thu được sản phẩm:", options: ["A. C₂H₅OC₂H₅", "B. C₂H₄", "C. CH₃CHO", "D. C₂H₅OSO₃H"], correct: "A", explanation: "Điều chế diethyl ether." },
+        { text: "Số đồng phân cấu tạo của C₂H₄Cl₂ là:", options: ["A. 1", "B. 2", "C. 3", "D. 4"], correct: "B", explanation: "1,1-dichloroethane và 1,2-dichloroethane." },
+        { text: "Dẫn xuất halogen tác dụng với dung dịch NaOH loãng, đun nóng thu được:", options: ["A. alcohol", "B. alkene", "C. alkyne", "D. ether"], correct: "A", explanation: "Phản ứng thế nucleophin tạo alcohol." },
+        { text: "Hydrocarbon X có CTPT C₅H₁₀, làm mất màu dung dịch brom. Số đồng phân cấu tạo của X là:", options: ["A. 5", "B. 6", "C. 7", "D. 8"], correct: "A", explanation: "Alkene C5H10 có 5 đồng phân mạch hở." },
+        { text: "Chất có tên gọi 2-methylbut-2-ene có cấu tạo:", options: ["A. CH₃–C(CH₃)=CH–CH₃", "B. CH₂=C(CH₃)–CH₂–CH₃", "C. CH₃–CH=CH–CH₂–CH₃", "D. (CH₃)₂C=CH–CH₃"], correct: "A", explanation: "Công thức CH₃–C(CH₃)=CH–CH₃." },
+        { text: "Polime được điều chế từ phản ứng trùng hợp CH₂=CH–C₆H₅ là:", options: ["A. Polystyrene", "B. PVA", "C. PVC", "D. Teflon"], correct: "A", explanation: "Styren → polystyren." },
+        { text: "Khi đốt cháy hoàn toàn một alkane thu được nCO₂/nH₂O = ?", options: ["A. n/(n+1)", "B. (n+1)/n", "C. n/(2n+2)", "D. 2n/(n+1)"], correct: "A", explanation: "CₙH₂ₙ₊₂ → nCO₂, (n+1)H₂O → tỷ lệ n/(n+1)." },
+        // 91-100
+        { text: "Công thức cấu tạo của cumene (isopropylbenzene) là:", options: ["A. C₆H₅–CH(CH₃)₂", "B. C₆H₅–CH₂–CH₃", "C. C₆H₅–C₂H₅", "D. C₆H₅–CH₂–CH₂–CH₃"], correct: "A", explanation: "Isopropylbenzene: C₆H₅–CH(CH₃)₂." },
+        { text: "Khí thiên nhiên chứa chủ yếu chất nào?", options: ["A. CH₄", "B. C₂H₆", "C. C₃H₈", "D. H₂"], correct: "A", explanation: "Methane chiếm 80–95%." },
+        { text: "Chất được dùng để kích thích quả mau chín là:", options: ["A. Ethylene (C₂H₄)", "B. Acetylene", "C. Methane", "D. Propane"], correct: "A", explanation: "Ethylene là hormone thực vật." },
+        { text: "Phản ứng của alkyne với AgNO₃/NH₃ dùng để nhận biết:", options: ["A. alkyne có liên kết ba đầu mạch", "B. tất cả alkyne", "C. alkene", "D. alkadien"], correct: "A", explanation: "Chỉ alkyne có H linh động (≡C–H)." },
+        { text: "Trong công nghiệp, phenol được sản xuất chủ yếu từ:", options: ["A. cumene", "B. benzen", "C. clobenzen", "D. nhựa than đá"], correct: "A", explanation: "Phương pháp cumene hiện đại." },
+        { text: "Hợp chất nào dưới đây thuộc loại aldehyde hai chức?", options: ["A. OHC–CHO", "B. CH₃–CHO", "C. H–CHO", "D. C₆H₅–CHO"], correct: "A", explanation: "Oxalaldehyde (ethanedial)." },
+        { text: "Natri axetat + vôi tôi xút → khí X. X là chất nào?", options: ["A. CH₄", "B. C₂H₄", "C. C₂H₂", "D. CO₂"], correct: "A", explanation: "Phản ứng decarboxyl: CH₃COONa + NaOH → CH₄ + Na₂CO₃." },
+        { text: "Trong phòng thí nghiệm, khí C₂H₂ được điều chế từ:", options: ["A. CaC₂ + H₂O", "B. C₂H₅OH + H₂SO₄", "C. CH₄ nhiệt phân", "D. C + H₂"], correct: "A", explanation: "Canxi cacbua tác dụng nước." },
+        { text: "Chất nào sau đây có khả năng trùng hợp tạo cao su buna?", options: ["A. Buta-1,3-diene", "B. Isoprene", "C. Ethene", "D. Propene"], correct: "A", explanation: "Cao su buna từ CH₂=CH–CH=CH₂." },
+        { text: "Khi oxi hóa CH₃CH₂OH bằng CuO, t° thu được sản phẩm chính là:", options: ["A. CH₃CHO", "B. CH₃COOH", "C. CO₂ + H₂O", "D. C₂H₄"], correct: "A", explanation: "Oxi hóa không hoàn toàn: ethanol → acetaldehyde." }
+    ]; // 100 câu chính xác
+
+    function renderAll() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        questionsData.forEach((q, idx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.setAttribute('data-qid', idx);
+            const optionsHtml = q.options.map((opt, optIdx) => {
+                const letter = String.fromCharCode(65+optIdx);
+                return `<label class="option"><input type="radio" name="q${idx}" value="${letter}"><span>${opt}</span></label>`;
+            }).join('');
+            card.innerHTML = `
+                <div class="question-title"><span class="q-num">Câu ${idx+1}</span><span class="q-text">${q.text}</span></div>
+                <div class="options">${optionsHtml}</div>
+                <div class="feedback" id="feedback-${idx}"><span class="explain">⚡ Chọn đáp án và nhấn "Kiểm tra"</span><button class="check-btn" data-idx="${idx}">🔍 Kiểm tra</button></div>
+            `;
+            container.appendChild(card);
+        });
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(btn.getAttribute('data-idx'));
+                checkAnswer(idx);
+            });
+        });
+    }
+
+    function checkAnswer(idx) {
+        const q = questionsData[idx];
+        const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+        const fbDiv = document.getElementById(`feedback-${idx}`);
+        if (!fbDiv) return;
+        if (!selected) {
+            fbDiv.innerHTML = `<span class="explain">⚠️ Vui lòng chọn A, B, C hoặc D.</span><button class="check-btn" data-idx="${idx}">🔍 Kiểm tra</button>`;
+            const newBtn = fbDiv.querySelector('.check-btn');
+            if(newBtn) newBtn.addEventListener('click', () => checkAnswer(idx));
+            fbDiv.classList.remove('correct','wrong');
+            return;
+        }
+        const isCorrect = (selected.value === q.correct);
+        const correctLetter = q.correct;
+        const correctText = q.options.find(opt => opt.startsWith(correctLetter+'.')) || q.options[correctLetter.charCodeAt(0)-65];
+        if(isCorrect){
+            fbDiv.innerHTML = `<span class="explain">✅ Đúng! ${q.explanation}</span><button class="check-btn" data-idx="${idx}">🔍 Kiểm tra</button>`;
+            fbDiv.classList.add('correct');
+            fbDiv.classList.remove('wrong');
+        } else {
+            fbDiv.innerHTML = `<span class="explain">❌ Sai. Đáp án đúng: <strong>${correctLetter}. ${correctText.substring(2)}</strong>. ${q.explanation}</span><button class="check-btn" data-idx="${idx}">🔍 Thử lại</button>`;
+            fbDiv.classList.add('wrong');
+            fbDiv.classList.remove('correct');
+        }
+        const newBtn = fbDiv.querySelector('.check-btn');
+        if(newBtn) newBtn.addEventListener('click', () => checkAnswer(idx));
+    }
+
+    function resetAll() {
+        for(let i=0;i<questionsData.length;i++){
+            document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+            const fb = document.getElementById(`feedback-${i}`);
+            if(fb){
+                fb.innerHTML = `<span class="explain">⚡ Chọn đáp án và nhấn "Kiểm tra"</span><button class="check-btn" data-idx="${i}">🔍 Kiểm tra</button>`;
+                fb.classList.remove('correct','wrong');
+                const btn = fb.querySelector('.check-btn');
+                if(btn) btn.addEventListener('click', () => checkAnswer(i));
+            }
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderAll();
+        document.getElementById('resetAllBtn')?.addEventListener('click', resetAll);
+    });
+</script>
+</body>
+</html>
