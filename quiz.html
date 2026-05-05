@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ôn tập Hóa học HKII – Hydrocarbon & Dẫn xuất | Trắc nghiệm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f5f9;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #0f172a;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-header p {
+            color: #334155;
+            font-weight: 500;
+            border-bottom: 2px solid #cbd5e1;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        /* Progress + filter */
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 32px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .badge {
+            background: #e0f2fe;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0369a1;
+        }
+
+        .reset-btn {
+            background: none;
+            border: 1px solid #cbd5e1;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            color: #1e293b;
+        }
+
+        .reset-btn:hover {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+
+        /* Question card */
+        .question-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-bottom: 1.8rem;
+            padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+            transition: all 0.15s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .question-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .q-num {
+            background: #2d6a4f20;
+            color: #1f5e3a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .q-text {
+            font-weight: 600;
+            line-height: 1.4;
+            color: #0c4a6e;
+        }
+
+        .options {
+            margin: 1rem 0 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            padding: 6px 8px;
+            border-radius: 40px;
+            transition: background 0.1s;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f8fafc;
+        }
+
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2c7da0;
+            cursor: pointer;
+        }
+
+        .feedback {
+            margin-top: 0.9rem;
+            padding: 0.7rem 1rem;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            background: #f8fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-left: 5px solid #cbd5e1;
+        }
+
+        .feedback.correct {
+            background: #e6f9ed;
+            border-left-color: #2e7d32;
+            color: #1e4620;
+        }
+
+        .feedback.wrong {
+            background: #ffeaea;
+            border-left-color: #c62828;
+            color: #9b2c1d;
+        }
+
+        .check-btn {
+            background: #2c7da0;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .check-btn:hover {
+            background: #1f5e7e;
+        }
+
+        .explain {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        hr {
+            margin: 2rem 0 0.5rem;
+            border-color: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #475569;
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+        }
+        @media (max-width: 640px) {
+            .question-card {
+                padding: 1rem;
+            }
+            .options {
+                margin-left: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="quiz-header">
+        <h1>📘 Ôn tập cuối học kỳ II</h1>
+        <p>Hydrocarbon • Dẫn xuất halogen • Alcohol • Phenol • Carbonyl</p>
+    </div>
+    <div class="info-bar">
+        <div class="badge">✅ 30 câu trắc nghiệm | Chọn đáp án & kiểm tra</div>
+        <button class="reset-btn" id="resetAllBtn">⟳ Làm mới tất cả</button>
+    </div>
+    <div id="questionsContainer"></div>
+    <footer>📖 Dựa trên tài liệu ThS. Vũ Duy Hưng – Tổng hợp lý thuyết + bài tập. Chọn câu trả lời, nhấn "Kiểm tra" để xem kết quả.</footer>
+</div>
+
+<script>
+    // ----- Dữ liệu câu hỏi (trích từ các chuyên đề) -----
+    const questionsData = [
+        { // 1
+            text: "Chất nào sau đây là alkane?",
+            options: ["A. CH₄", "B. C₃H₆", "C. C₄H₆", "D. C₈H₈"],
+            correct: "A",
+            explanation: "Alkane là hydrocarbon no mạch hở, chỉ có liên kết đơn. CH₄ (methane) thuộc alkane."
+        },
+        { // 2
+            text: "Công thức tổng quát của alkane là:",
+            options: ["A. CₙH₂ₙ₊₂ (n ≥ 1)", "B. CₙH₂ₙ (n ≥ 2)", "C. CₙH₂ₙ₋₂ (n ≥ 3)", "D. CₙH₂ₙ₋₆ (n ≥ 6)"],
+            correct: "A",
+            explanation: "Alkane: CₙH₂ₙ₊₂, mạch hở, liên kết đơn."
+        },
+        { // 3
+            text: "Số nguyên tử carbon trong phân tử pentane là:",
+            options: ["A. 4", "B. 5", "C. 2", "D. 3"],
+            correct: "B",
+            explanation: "Pentane có 5 nguyên tử carbon (C₅H₁₂)."
+        },
+        { // 4
+            text: "Tên gọi của CH₃CH(CH₃)CH₂CH₃ là:",
+            options: ["A. pentane", "B. isobutane", "C. neopentane", "D. isopentane"],
+            correct: "D",
+            explanation: "CH₃–CH(CH₃)–CH₂–CH₃: mạch chính 4C, có nhánh methyl ở C2 ⇒ isopentane (2-methylbutane)."
+        },
+        { // 5
+            text: "Alkene là những hydrocarbon:",
+            options: ["A. không no, mạch hở, có chứa hai liên kết C=C", "B. không no, mạch hở, có chứa bốn liên kết C=C", "C. không no, mạch hở, có chứa một liên kết C=C", "D. không no, mạch hở, có chứa ba liên kết C=C"],
+            correct: "C",
+            explanation: "Alkene đặc trưng bởi một liên kết đôi C=C trong phân tử."
+        },
+        { // 6
+            text: "Khái niệm đúng về alkyne là:",
+            options: ["A. Hydrocarbon không no, mạch hở có 1 liên kết ba C≡C.", "B. Hydrocarbon no, mạch hở có 1 liên kết ba.", "C. Hydrocarbon mạch hở có liên kết đôi C=C.", "D. Hydrocarbon có liên kết đôi C=C trong phân tử."],
+            correct: "A",
+            explanation: "Alkyne chứa 1 liên kết ba C≡C, mạch hở, không no."
+        },
+        { // 7
+            text: "Công thức chung của alkyne là:",
+            options: ["A. CₙH₂ₙ₊₁", "B. CₙH₂ₙ₊₂", "C. CₙH₂ₙ", "D. CₙH₂ₙ₋₂ (n ≥ 2)"],
+            correct: "D",
+            explanation: "Alkyne có công thức CₙH₂ₙ₋₂ (n≥2)."
+        },
+        { // 8
+            text: "Arene (hydrocarbon thơm) là:",
+            options: ["A. hợp chất chứa nhiều vòng benzene.", "B. hydrocarbon trong phân tử có chứa một hay nhiều vòng benzene.", "C. hydrocarbon chứa một vòng benzene.", "D. hydrocarbon chứa hai vòng benzene."],
+            correct: "B",
+            explanation: "Arene bao gồm hydrocarbon có một hoặc nhiều vòng benzene."
+        },
+        { // 9 Dẫn xuất halogen
+            text: "Chất nào sau đây thuộc dẫn xuất halogen của hydrocarbon?",
+            options: ["A. C₂H₅OH", "B. CH₃CHO", "C. CH₃Cl", "D. C₂H₇N"],
+            correct: "C",
+            explanation: "CH₃Cl (chloromethane) là dẫn xuất halogen, thay H bằng Cl."
+        },
+        { // 10
+            text: "Ethyl chloride có công thức cấu tạo là:",
+            options: ["A. CH₃CH₂Cl", "B. CH₂=CHBr", "C. CH₃Cl", "D. C₆H₅Cl"],
+            correct: "A",
+            explanation: "Ethyl chloride: CH₃–CH₂–Cl (C₂H₅Cl)."
+        },
+        { // 11
+            text: "Monomer dùng để sản xuất nhựa PVC là:",
+            options: ["A. CH₃–CH₂–Cl", "B. CH₂=CH–CH₂Cl", "C. C₆H₅Cl", "D. CH₂=CH–Cl"],
+            correct: "D",
+            explanation: "PVC từ vinyl chloride CH₂=CH–Cl."
+        },
+        { // 12 Alcohol
+            text: "Alcohol no, đơn chức, mạch hở có công thức chung là:",
+            options: ["A. CₙH₂ₙ₊₁OH (n ≥ 1)", "B. CₙH₂ₙ₊₂O (n ≥ 2)", "C. CₙH₂ₙOH (n ≥ 1)", "D. CₙH₂ₙ₋₁OH (n ≥ 2)"],
+            correct: "A",
+            explanation: "Alcohol no, đơn chức, mạch hở: CₙH₂ₙ₊₁OH."
+        },
+        { // 13
+            text: "Công thức phân tử của methanol (gây ngộ độc rượu) là:",
+            options: ["A. C₂H₄(OH)₂", "B. CH₃OH", "C. C₂H₅OH", "D. C₃H₇OH"],
+            correct: "B",
+            explanation: "Methanol: CH₃OH, độc, thường lẫn trong cồn công nghiệp."
+        },
+        { // 14
+            text: "Ethyl alcohol tan vô hạn trong nước chủ yếu do:",
+            options: ["A. khối lượng phân tử nhỏ", "B. tương tác van der Waals", "C. liên kết hydrogen với nước", "D. liên kết cộng hóa trị với nước"],
+            correct: "C",
+            explanation: "Nhóm –OH tạo liên kết H mạnh với nước làm tăng độ tan."
+        },
+        { // 15
+            text: "Chất nào sau đây là alcohol bậc III?",
+            options: ["A. CH₃–CH₂–OH", "B. CH₃–OH", "C. CH₃–C(CH₃)(OH)–CH₃", "D. CH₃–CH(OH)–CH₃"],
+            correct: "C",
+            explanation: "CH₃–C(OH)(CH₃)–CH₃ là tert-butyl alcohol (C bậc III gắn OH)."
+        },
+        { // 16 Phenol
+            text: "Phenol là hợp chất hữu cơ trong phân tử có:",
+            options: ["A. nhóm –OH và vòng benzene.", "B. nhóm –OH liên kết trực tiếp với C của vòng benzene.", "C. nhóm –OH liên kết với carbon không no.", "D. nhóm –OH liên kết với carbon no."],
+            correct: "B",
+            explanation: "Phenol có nhóm –OH gắn trực tiếp vào vòng benzene."
+        },
+        { // 17
+            text: "Tính chất vật lí nào sau đây không đúng với phenol?",
+            options: ["A. Ít tan trong nước lạnh.", "B. Tan tốt trong dung môi hữu cơ.", "C. Độc, gây bỏng da.", "D. Ở nhiệt độ cao, phenol không tan trong nước."],
+            correct: "D",
+            explanation: "Phenol tan nhiều hơn khi đun nóng, không phải 'không tan'."
+        },
+        { // 18
+            text: "Phản ứng chứng minh phenol có tính acid yếu là:",
+            options: ["A. Phản ứng với Na", "B. Phản ứng với dung dịch NaOH", "C. Phản ứng với nước bromine", "D. Phản ứng với HNO₃ đặc/H₂SO₄ đặc"],
+            correct: "B",
+            explanation: "Phenol + NaOH → C₆H₅ONa + H₂O thể hiện tính acid."
+        },
+        { // 19 Carbonyl
+            text: "Hợp chất carbonyl chứa nhóm chức nào?",
+            options: ["A. –OH", "B. –NH₂", "C. >C=O (carbonyl)", "D. –O–"],
+            correct: "C",
+            explanation: "Nhóm carbonyl C=O đặc trưng cho aldehyde và ketone."
+        },
+        { // 20
+            text: "Acetone (dimethyl ketone) có công thức phân tử là:",
+            options: ["A. C₃H₆O₂", "B. C₃H₆O₃", "C. C₃H₈O", "D. C₃H₆O"],
+            correct: "D",
+            explanation: "Acetone CH₃–CO–CH₃ ⇔ C₃H₆O."
+        },
+        { // 21
+            text: "Formol (dùng bảo quản mẫu sinh vật, độc) là tên thường gọi của chất nào?",
+            options: ["A. Methanol", "B. Phenol", "C. Formaldehyde (HCHO)", "D. Acetone"],
+            correct: "C",
+            explanation: "Formol là dung dịch formaldehyde HCHO trong nước."
+        },
+        { // 22
+            text: "Thuốc thử Tollens [Ag(NH₃)₂]OH dùng để nhận biết aldehyde vì phản ứng tạo:",
+            options: ["A. Kết tủa đỏ gạch", "B. Lớp bạc sáng bám thành", "C. Kết tủa vàng", "D. Mất màu bromine"],
+            correct: "B",
+            explanation: "Phản ứng tráng bạc tạo Ag kim loại bám trên thành ống nghiệm."
+        },
+        { // 23 Hợp chất carbonyl
+            text: "Hợp chất nào sau đây không bị oxi hóa bởi thuốc thử Tollens?",
+            options: ["A. HCHO", "B. CH₃CHO", "C. CH₃COCH₃ (acetone)", "D. C₂H₅CHO"],
+            correct: "C",
+            explanation: "Ketone không phản ứng tráng gương, chỉ aldehyde mới phản ứng."
+        },
+        { // 24
+            text: "Số đồng phân alcohol bậc I ứng với C₄H₁₀O là bao nhiêu?",
+            options: ["A. 1", "B. 2", "C. 3", "D. 4"],
+            correct: "B",
+            explanation: "C₄H₁₀O alcohol bậc I: butan-1-ol và 2-methylpropan-1-ol (2 đồng phân)."
+        },
+        { // 25
+            text: "Chất có thể phản ứng với Cu(OH)₂ tạo dung dịch màu xanh lam đậm ở nhiệt độ thường là:",
+            options: ["A. Ethanol", "B. Phenol", "C. Glycerol (propane-1,2,3-triol)", "D. Methanol"],
+            correct: "C",
+            explanation: "Polyalcohol có nhóm –OH kề nhau (glycerol, ethylene glycol) tạo phức xanh với Cu(OH)₂."
+        },
+        { // 26
+            text: "Phản ứng tách nước của butan-2-ol (xúc tác H₂SO₄ đặc, 170°C) tạo alkene chính nào?",
+            options: ["A. but-1-ene", "B. but-2-ene", "C. 2-methylpropene", "D. propene"],
+            correct: "B",
+            explanation: "Tuân theo quy tắc Zaitsev: tách H từ C bậc cao hơn cho but-2-ene (CH₃–CH=CH–CH₃)."
+        },
+        { // 27
+            text: "Công thức cấu tạo của teflon (chất chống dính) được trùng hợp từ monome:",
+            options: ["A. CH₂=CHCl", "B. CF₂=CF₂", "C. CH₂=CH–CH₂Cl", "D. CF₃–CF₃"],
+            correct: "B",
+            explanation: "Teflon từ tetrafluoroethylene CF₂=CF₂."
+        },
+        { // 28 Chọn câu đúng - hydrocarbon thơm
+            text: "Phát biểu nào sau đây không đúng?",
+            options: ["A. Benzen không làm mất màu dd nước bromine.", "B. Benzen phản ứng thế với bromine khan (xúc tác Fe).", "C. Benzen có nhiều liên kết đôi nên thuộc alkene.", "D. Toluen dùng làm dung môi hữu cơ."],
+            correct: "C",
+            explanation: "Benzen có cấu trúc vòng thơm bền, không phải alkene dù có liên kết đôi đặc biệt."
+        },
+        { // 29 Điều chế acetylene
+            text: "Trong phòng thí nghiệm, acetylene (C₂H₂) được điều chế từ:",
+            options: ["A. CaC₂ + H₂O", "B. Nhiệt phân methane", "C. Ethene + H₂", "D. Lên men tinh bột"],
+            correct: "A",
+            explanation: "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂ (phương pháp cổ điển)."
+        },
+        { // 30
+            text: "Hợp chất nào sau đây vừa phản ứng với Na, vừa phản ứng với dung dịch NaOH?",
+            options: ["A. CH₃CH₂OH", "B. C₆H₅OH (phenol)", "C. CH₃–O–CH₃", "D. CH₃CHO"],
+            correct: "B",
+            explanation: "Phenol có H linh động ở nhóm –OH (tác dụng Na) và tính acid yếu (phản ứng NaOH)."
+        }
+    ];
+
+    // Hàm render toàn bộ câu hỏi
+    function renderQuestions() {
+        const container = document.getElementById('questionsContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        questionsData.forEach((q, idx) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-card';
+            questionDiv.setAttribute('data-qid', idx);
+            // title + text
+            const titleHtml = `
+                <div class="question-title">
+                    <span class="q-num">Câu ${idx+1}</span>
+                    <span class="q-text">${q.text}</span>
+                </div>
+                <div class="options" id="options-${idx}">
+                    ${q.options.map((opt, optIdx) => {
+                        const optLetter = String.fromCharCode(65+optIdx); // A,B,C,D
+                        return `
+                            <label class="option">
+                                <input type="radio" name="q${idx}" value="${optLetter}">
+                                <span>${opt}</span>
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+                <div class="feedback" id="feedback-${idx}">
+                    <span class="explain">⚡ Chọn đáp án và nhấn "Kiểm tra"</span>
+                    <button class="check-btn" data-idx="${idx}">🔍 Kiểm tra</button>
+                </div>
+            `;
+            questionDiv.innerHTML = titleHtml;
+            container.appendChild(questionDiv);
+        });
+
+        // Attach event listeners cho các nút kiểm tra
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(btn.getAttribute('data-idx'));
+                checkAnswer(idx);
+            });
+        });
+    }
+
+    // Kiểm tra câu trả lời
+    function checkAnswer(idx) {
+        const q = questionsData[idx];
+        const selectedRadio = document.querySelector(`input[name="q${idx}"]:checked`);
+        const feedbackDiv = document.getElementById(`feedback-${idx}`);
+        if (!feedbackDiv) return;
+
+        if (!selectedRadio) {
+            feedbackDiv.innerHTML = `<span class="explain">⚠️ Vui lòng chọn một đáp án (A, B, C hoặc D).</span>
+                                     <button class="check-btn" data-idx="${idx}">🔍 Kiểm tra</button>`;
+            feedbackDiv.classList.remove('correct', 'wrong');
+            // re-attach event cho nút mới
+            const newBtn = feedbackDiv.querySelector('.check-btn');
+            if(newBtn) newBtn.addEventListener('click', () => checkAnswer(idx));
+            return;
+        }
+
+        const userAnswer = selectedRadio.value;
+        const isCorrect = (userAnswer === q.correct);
+        const correctLetter = q.correct;
+        const correctAnswerText = q.options.find(opt => opt.startsWith(correctLetter+'.')) || q.options[correctLetter.charCodeAt(0)-65];
+        
+        if (isCorrect) {
+            feedbackDiv.innerHTML = `<span class="explain">✅ Đúng! ${q.explanation}</span>
+                                     <button class="check-btn" data-idx="${idx}">🔍 Kiểm tra lại</button>`;
+            feedbackDiv.classList.add('correct');
+            feedbackDiv.classList.remove('wrong');
+        } else {
+            feedbackDiv.innerHTML = `<span class="explain">❌ Sai rồi. Đáp án đúng là <strong>${correctLetter}. ${correctAnswerText.substring(2)}</strong>. ${q.explanation}</span>
+                                     <button class="check-btn" data-idx="${idx}">🔍 Thử lại</button>`;
+            feedbackDiv.classList.add('wrong');
+            feedbackDiv.classList.remove('correct');
+        }
+        // Re-attach event cho button mới (vì innerHTML thay đổi)
+        const newBtn = feedbackDiv.querySelector('.check-btn');
+        if(newBtn) {
+            newBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                checkAnswer(idx);
+            });
+        }
+    }
+
+    // Reset tất cả: xóa lựa chọn radio, reset feedback về trạng thái ban đầu
+    function resetAll() {
+        for(let i = 0; i < questionsData.length; i++) {
+            const radioGroup = document.querySelectorAll(`input[name="q${i}"]`);
+            radioGroup.forEach(radio => radio.checked = false);
+            const feedbackDiv = document.getElementById(`feedback-${i}`);
+            if(feedbackDiv) {
+                feedbackDiv.innerHTML = `<span class="explain">⚡ Chọn đáp án và nhấn "Kiểm tra"</span>
+                                         <button class="check-btn" data-idx="${i}">🔍 Kiểm tra</button>`;
+                feedbackDiv.classList.remove('correct', 'wrong');
+                // gắn lại sự kiện
+                const btn = feedbackDiv.querySelector('.check-btn');
+                if(btn) {
+                    btn.addEventListener('click', () => checkAnswer(i));
+                }
+            }
+        }
+    }
+
+    // Khởi tạo và gắn reset cho nút
+    document.addEventListener('DOMContentLoaded', () => {
+        renderQuestions();
+        const resetBtn = document.getElementById('resetAllBtn');
+        if(resetBtn) {
+            resetBtn.addEventListener('click', resetAll);
+        }
+    });
+</script>
+</body>
+</html>
